@@ -20,7 +20,7 @@ func wame(w http.ResponseWriter, r *http.Request){
 func main() {
     http.HandleFunc("/", wame)
     http.HandleFunc("/walink", walink)
-    http.ListenAndServe(":3001", nil)
+    http.ListenAndServe(":8080", nil)
 }
 
 func walink(w http.ResponseWriter, r *http.Request){
