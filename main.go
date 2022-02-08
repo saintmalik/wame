@@ -5,6 +5,7 @@ import (
     // "strings"
     "html/template"
     "net/http"
+	"os"
 )
 
 var tpl *template.Template
@@ -23,7 +24,7 @@ func main() {
 	if port == "" {
 	  port = "8080"
 	}
-	
+
     http.HandleFunc("/", wame)
     http.HandleFunc("/walink", walink)
     http.ListenAndServe(":"+port, nil)
