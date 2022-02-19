@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>WaMeir - Start The Reachout</title>
 </head>
 <body>
-
-<a href="{{.Country -}} {{- .Num}}" target="_blank">{{.Country -}} {{- .Num}}</a>
+  <ol>
+      {{ $data := .Country}}
+    {{range $element := .Num}} 
+      <li><a href="{{$data -}} {{- $element}}">{{$data -}} {{- $element}}</</li>
+      {{end}}
+  </ol>  
     
 </body>
 </html>

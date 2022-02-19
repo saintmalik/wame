@@ -1,11 +1,12 @@
 package main
 
 import (
-    // "fmt"
-    // "strings"
-    "html/template"
-    "net/http"
+	// "fmt"
+	"html/template"
+	"net/http"
 	"os"
+	// "reflect"
+	"strings"
 )
 
 var tpl *template.Template
@@ -32,19 +33,32 @@ func main() {
 
 func walink(w http.ResponseWriter, r *http.Request){
     if r.Method != "POST" {
-        http.Redirect(w, r, "/", http.StatusSeeOther )
+        http.Redirect(w, r, "/", http.StatusSeeOther ) 
         return
 }
     countrycode := r.FormValue("cid")
-    numbers :=  r.FormValue("numbs")
+    numbers :=  r.FormValue("numbs") // takes the value from the form
+    
+v := strings.Fields(``+numbers+``) //split numbers into new lines
 
-    d := struct {
+ var codes []string
+ 
+ for _, s := range v{
+       k := s[1:]
+
+codes = append(codes, k)
+ }
+
+d := struct {
         Country string
-        Num string
+        Num [] string 
     }{
-        Country:  countrycode,
-        Num: numbers[1:],
-    }
+        Country: countrycode,  
+        Num: codes,
+}
+// fmt.Println(reflect.ValueOf(d.Num).Kind() )
+// fmt.Println(d.Num)// print the numbers to cli to see the outcomes
 
 tpl.ExecuteTemplate(w, "walink.html", d)
+
 }
