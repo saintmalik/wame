@@ -7,9 +7,11 @@
     <title>WaMeir - Start The Reachout</title>
 </head>
 <body>
+  {{$information := .CountryMessage}}
+    {{ $information}}
   <ol>
       {{ $data := .Country}}
-    {{range $element := .Num}} 
+    {{range $element := .Number}} 
       <li><a href="{{$data -}} {{- $element}}" target="_blank">{{$data -}} {{- $element}}</a></li>
       {{end}}
   </ol>  

@@ -1,11 +1,10 @@
 package main
 
 import (
-	// "fmt"
+	"fmt"
 	"html/template"
 	"net/http"
 	"os"
-	// "reflect"
 	"strings"
 )
 
@@ -24,7 +23,7 @@ func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
 	  port = "8080"
-	}
+	} // this was for simple deployment on heroku
 
     http.HandleFunc("/", wame)
     http.HandleFunc("/walink", walink)
@@ -37,27 +36,51 @@ func walink(w http.ResponseWriter, r *http.Request){
         return
 }
     countrycode := r.FormValue("cid")
-    numbers :=  r.FormValue("numbs") // takes the value from the form
+    phonenum :=  r.FormValue("numbs") // takes the value from the form
     
-v := strings.Fields(``+numbers+``) //split numbers into new lines
+v := strings.Fields(``+phonenum+``) //split numbers into new lines
 
- var codes []string
- 
- for _, s := range v{
-       k := s[1:]
+var WameNum []string //declared a global variable
 
-codes = append(codes, k)
- }
+switch countrycode {
+    case "https://wa.me/+234":
+        for _, number := range v {
+           l := number[1:]
+           WameNum = append(WameNum, l)
+        }
+    case "https://wa.me/+1":
+        for _, number := range v {
+            l := number[2:]
+            WameNum = append(WameNum, l)
+     }
+    case "https://wa.me/+44":
+        for _, number := range v {
+            l := number[3:]
+            WameNum = append(WameNum, l)
+        }
+} // a switch case to check the country code to decide the number format stripping, so it runs a range over the numbers and strips the required things off based on the rules
+
+var  inform string  //declared a global variable
+
+switch countrycode {
+case "https://wa.me/+234":
+    inform = fmt.Sprint("Your Nigerian WaMe Links are ready!!!")
+case "https://wa.me/+1":
+    inform = fmt.Sprint("Your USA WaMe Links are ready!!!")
+case "https://wa.me/+44":
+    inform = fmt.Sprint("Your UK WaMe Links are ready!!!")
+} //this switch case is to check the country code to decide the message to be display for the user based on the country they have picked
 
 d := struct {
+        CountryMessage string
         Country string
-        Num [] string 
+        Number [] string
     }{
+        CountryMessage:  inform,
         Country: countrycode,  
-        Num: codes,
+        Number: WameNum,
 }
-// fmt.Println(reflect.ValueOf(d.Num).Kind() )
-// fmt.Println(d.Num)// print the numbers to cli to see the outcomes
+// a struct to hold the data and pass them to the template to be deisplayed
 
 tpl.ExecuteTemplate(w, "walink.html", d)
 

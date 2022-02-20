@@ -1,33 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- <meta http-equiv="refresh" content="1"/> -->
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WaMeir - Reach out to whatsapp users without saving numbers</title>
 </head>
 <body>
-    <h2>WaMeir</h2>
-
+    <h2 style="text-align: center;">WaMeir 😀👌</h2>
+    <ul style="line-height: normal;line-height: 2;">
+      <li>For Nigeria Numbers: Enter your numbers in this format 080XXXXXXXXX</li>
+      <li>For USA Numbers: Enter your numbers in this format +1XXXXXXXXXX</li>
+      <li>For UK Numbers: Enter your numbers in this format +44XXXXXXXXXX</li>
+    </ul>
+     
     <form action="/walink" method="POST">
         <label for="Country">Choose Your Country:</label>
         <select id="cnid" name="cid">
-          <option value="https://wa.me/+234">NIG</option>
-          <option value="https://wa.me/+1">USA</option>
-          <option value="https://wa.me/+44">UK</option>
-          <!-- <option value="https://wa.me/+42">PH</option> -->
-          <!-- <option value="None">None</option> -->
+          <option value="https://wa.me/+234">Nigeria</option>
+          <option value="https://wa.me/+1">United States</option>
+          <option value="https://wa.me/+44">United Kingdom</option>
         </select>
         <br/><br/>
         <textarea  placeholder="Paste those numbers" rows="10" cols="50" name="numbs"></textarea>
-      <!-- <textarea id="numbers" name="numbs" rows="4" cols="50">
-    </textarea> -->
-    <br/>
+    <br/><br/>
       <input type="submit">
     </form> 
-    <!-- <footer>
-        <p>Made with by <a href="https://saintmalik.me" target="_blank">Saintmalik</a></p>
-    </footer> -->
 </body>
 </html>
