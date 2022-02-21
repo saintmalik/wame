@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>WaMeir - Reach out to whatsapp users without saving numbers</title>
 </head>
 <body>
     <h2 style="text-align: center;">WaMeir 😀👌</h2>
+    <div>
     <ul style="line-height: normal;line-height: 2;">
       <li>For Nigeria Numbers: Enter your numbers in this format 080XXXXXXXXX</li>
       <li>For USA Numbers: Enter your numbers in this format +1XXXXXXXXXX</li>
@@ -15,8 +17,10 @@
     </ul>
      
     <form action="/walink" method="POST">
-        <label for="Country">Choose Your Country:</label>
+        <!-- <label for="Country">Choose Your Country:</label> -->
         <select id="cnid" name="cid">
+          <option value="#">Choose Your Country</option>
+          
           <option value="https://wa.me/+234">Nigeria</option>
           <option value="https://wa.me/+1">United States</option>
           <option value="https://wa.me/+44">United Kingdom</option>
@@ -26,5 +30,6 @@
     <br/><br/>
       <input type="submit">
     </form> 
+  </div>
 </body>
 </html>
