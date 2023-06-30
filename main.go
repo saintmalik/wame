@@ -34,12 +34,12 @@ func main() {
 
 func walink(w http.ResponseWriter, r *http.Request){
     if r.Method != "POST" {
-        http.Redirect(w, r, "/", http.StatusSeeOther ) 
+        http.Redirect(w, r, "/", http.StatusSeeOther )
         return
 }
     countrycode := r.FormValue("cid")
     phonenum :=  r.FormValue("numbs") // takes the value from the form
-    
+
 v := strings.Fields(``+phonenum+``) //split numbers into new lines
 
 var WameNum []string //declared a global variable
@@ -79,7 +79,7 @@ d := struct {
         Number [] string
     }{
         CountryMessage:  inform,
-        Country: countrycode,  
+        Country: countrycode,
         Number: WameNum,
 }
 // a struct to hold the data and pass them to the template to be deisplayed
